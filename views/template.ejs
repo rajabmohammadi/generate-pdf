@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Monthly Payslip</title>
+</head>
+
+<body class="px-5">
+   <header class="border-bottom border-5">
+      <div class="row d-flex align-items-center">
+         <div class="col-12 text-center">
+            <img src="data:image/png;base64,<%= imageBase64 %>"  alt="">
+         </div>
+      </div>
+   </header>
+   <div>
+      <div>
+         <h2 class="text-center mt-3">MONTHLY PAYSLIP</h2>
+      </div>
+
+      <!-- Employee Information -->
+      <h4 class="text-center">Employee Information</h4>
+      <div class="table-responsive">
+         <table class="table table-borderless w-100">
+            <tbody class="d-flex flex-wrap">
+               <% Object.entries(employeeInfo).forEach(([key, value])=> { %>
+                  <tr class="w-50 d-flex mt-1">
+                     <th class="w-50">
+                        <%= key %>:
+                     </th>
+                     <td class="w-50">
+                        <%= value %>
+                     </td>
+                  </tr>
+                  <% }) %>
+            </tbody>
+         </table>
+      </div>
+      <!-- Analytical Information -->
+      <h4 class="text-center">Analytical Information</h4>
+      <table class="table table-bordered">
+         <thead>
+            <tr>
+               <th>Project</th>
+               <th>Job</th>
+               <th>Budget line</th>
+               <th>Account</th>
+               <th>(%) Salary</th>
+               <th>Gross Salary</th>
+               <th>Net Salary</th>
+            </tr>
+         </thead>
+         <tbody>
+            <% analyticalInfo.forEach((obj)=> { %>
+               <tr class="mt-1">
+                  <td>
+                     <%= obj.project %>
+                  </td>
+                  <td>
+                     <%= obj.job %>
+                  </td>
+                  <td>
+                     <%= obj.budgetLine %>
+                  </td>
+                  <td>
+                     <%= obj.account %>
+                  </td>
+                  <td>
+                     <%= obj.percentageSalary %>
+                  </td>
+                  <td>
+                     <%= obj.grossSalary %>
+                  </td>
+                  <td>
+                     <%= obj.netSalary %>
+                  </td>
+               </tr>
+               <% }) %>
+         </tbody>
+      </table>
+
+      <!-- Salary Information -->
+      <h4 class="text-center">Salary Information</h4>
+      <table class="table table-borderless">
+         <tbody class="d-flex flex-wrap">
+            <% Object.entries(salaryInfo).forEach(([key, value])=> { %>
+               <tr class="w-50 d-flex mt-1">
+                  <th class="w-50">
+                     <%= key %>:
+                  </th>
+                  <td class="w-50">
+                     <%= value %>
+                  </td>
+               </tr>
+               <% }) %>
+         </tbody>
+      </table>
+
+      <!-- Confirmations -->
+      <div class="row">
+         <div class="col-md-6">
+            <h4 class="px-2">HR Department Confirmation</h4>
+            <div class="border p-2">
+               <p>
+                  We hereby confirm the accuracy of the
+                  employee salary calculation outlined above, in
+                  accordance with the organization's policies
+                  and procedures.
+               </p>
+               <p>Signature/Stamp:</p>
+               <div class="signature"></div>
+            </div>
+
+         </div>
+         <div class="col-md-6">
+            <h4 class="px-2">Employee Acknowledgment</h4>
+            <div class="border p-2">
+               <p>
+                  I hereby acknowledge the receipt of the net
+                  salary as stated. and I affirm my full
+                  understanding and agreement with all the
+                  aforementioned printed details.
+               </p>
+               <p>Signature:</p>
+               <div class="signature"></div>
+            </div>
+         </div>
+      </div>
+   </div>
+</body>
+
+</html>
